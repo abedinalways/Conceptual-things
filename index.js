@@ -55,3 +55,35 @@ const myAccount = new BankAccount('123456789');
 myAccount.deposite(1000);
 myAccount.withdraw(500);
 console.log(`Current balance is ${myAccount.getBalance()} tk`);
+
+
+//Linked List::
+// Linked List হলো একটি data structure যেখানে ডেটাগুলো (elements) ধারাবাহিকভাবে থাকে, কিন্তু array-এর মতো এক জায়গায় জমা থাকে না।
+//প্রতিটি element (যাকে Node বলে) দুইটি অংশে গঠিত হয় –
+// Data/Value – যেখানে আসল মান (যেমন সংখ্যা বা string) থাকে।
+// Next (pointer/reference) – যেখানে পরের Node-এর address/reference থাকে।
+// অর্থাৎ, প্রতিটি Node জানে তার পরের Node কোথায় আছে।
+
+class Node{
+  constructor(value){
+    this.value=value;
+    this.next=null;
+  }
+}
+class LinkedList{
+  constructor(){
+    this.head=null;
+  }
+  append(value){
+    const newNode =new Node(value);
+    if(!this.head){
+      this.head=newNode;
+      return;
+    }
+    let current=this.head;
+    while(current.next){
+      this.head=current.next;
+    }
+    current.next=newNode;
+  }
+}
